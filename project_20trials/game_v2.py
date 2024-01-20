@@ -24,16 +24,13 @@ def random_predict(number: int = 1) -> int:
         condition_both_numbers_even = number % 2 == 0 and predict % 2 == 0
         combined_condition = condition_both_numbers_even or condition_both_numbers_odd
         
-        if number > predict:
-            if combined_condition:
+        if not combined_condition:
+            predict +=  1
+        else:
+            if number > predict:
                 predict += 2
-            else:
-                predict +=  1
-        elif number < predict:
-            if combined_condition:
+            elif number < predict:
                 predict -= 2
-            else:
-                predict -= 1
         
     return count
 
